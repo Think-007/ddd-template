@@ -1,0 +1,177 @@
+#spring:
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 192.168.100.61:20175
+#        namespace: 73c46aa7-c071-4013-aa2a-c6c3b8db1edf
+#  application:
+#    name: dubbo-provider
+#dubbo:
+#  cloud:
+#    subscribed-services: ""
+#  registry: nacos://${spring.cloud.nacos.config.server-addr}
+#  application:
+#    name: dubbo-provider-a
+#  protocol:
+#    name: dubbo
+#    port: 20880
+#  scan:
+#    base-packages: com.test.www.dubboprovider.provider
+#
+#
+#
+#management:
+#  health:
+#    defaults:
+#      enabled: false
+#  server:
+#    port: 8081
+#  endpoints:
+#    health:
+#      show-details: always
+#    web:
+#      base-path: /manage
+#      exposure:
+#        include: '*'
+#logging:
+#  level:
+#    # org.springframework.cloud.gateway: trace
+#    com.lbgc.www.appservice.MyFeign: trace
+#mybatis-plus:
+#  configuration:
+#    call-setters-on-nulls: true
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#  type-aliases-package: com.lbgc.**.entity
+#
+#mybatis:
+#  mapper-locations: classpath*:mapper/*Mapper.xml
+#  max-time: 100000
+#ribbon:
+#  ConnectTimeout: 5000
+#  ReadTimeout: 5000
+#  ServerListRefreshInterval: 5000
+#  MaxAutoRetries: 1
+#  MaxAutoRetriesNextServer: 1
+#
+#feign:
+#  hystrix:
+#    enabled: false
+#  httpclient:
+#    enabled: false
+#  okhttp:
+#    enabled: true
+#  client:
+#    config:
+#      default:
+#        loggerLevel: full
+#
+#
+#
+#  leuth:
+#    sampler:
+#      percentage: 1
+#  redis:
+#    database: 5
+#    host: 192.168.100.42
+#    hostName: 192.168.100.42
+#    password: kkbtest2019
+#    port: 6379
+#    lettuce:
+#      pool:
+#        max-active: 200
+#        max-idle: 20
+#        min-idle: 5
+#        max-wait: 2000
+#  rabbitmq:
+#    host: 192.168.100.54
+#    port: 5672
+#    username: guest
+#    password: guest
+#    publisher-confirms: true
+#    publisher-returns: true
+#    listener:
+#      type: simple
+#      direct:
+#        acknowledge-mode: manual
+#      simple:
+#        acknowledge-mode: manual
+#security:
+#  token-info-uri: https://kmos-api-test.kaikeba.com/corgi/auth/oauth/check_token
+#  user_info_uri: https://kmos-api-test.kaikeba.com/corgi/upms/user/info
+#  oauth2:
+#    resource:
+#      loadBalanced: false
+#    client:
+#      id: 1015
+#      tenantid: 6XWFVymtaB68REyRBuf
+#      client-secret: lbgc
+#      scope: server
+#      ignore-urls:
+#        - /manage/**
+#        - /**.html
+#        - /service/**
+#        - /front/**
+#
+#  tomcat:
+#    accesslog:
+#      buffered: true
+#      directory: /opt/logs
+#      enabled: true
+#      file-date-format: yyyy-MM-dd
+#      pattern: '%h %a %A %l %T %t %r %s %b %{Referer}i %{User-Agent}i'
+#      prefix: access_log
+#      rename-on-rotate: false
+#      request-attributes-enabled: false
+#      rotate: true
+#      suffix: .log
+#
+server:
+  port: 8082
+#  servlet:
+#    context-path: /dubbo-provider
+#
+#sharding:
+#  jdbc:
+#    plat:
+#      dataSources:
+#        ds_share0_master:
+#          driverClassName: com.mysql.cj.jdbc.Driver
+#          type: com.zaxxer.hikari.HikariDataSource
+#          jdbcUrl: jdbc:mysql://192.168.100.54:3306/lbgc-app-service?useUnicode=true&useSSL=false&serverTimezone=GMT%2B8
+#          password: Meihao100@bfbd
+#          username: test
+#          poolName: share0_master_pool
+#          maxPoolSize: 60
+#          minIdle: 10
+#          idleTimeout: 60000
+#          autoCommit: true
+#          maxLifetime: 600000
+#          connectionTimeout: 60000
+#          connectionInitSql: set names utf8mb4;
+#          connectionTestQuery: SELECT 1
+#          validationTimeout: 3000
+#
+#        ds_share0_slave_0:
+#          driverClassName: com.mysql.cj.jdbc.Driver
+#          type: com.zaxxer.hikari.HikariDataSource
+#          jdbcUrl: jdbc:mysql://192.168.100.54:3306/lbgc-app-service?useUnicode=true&useSSL=false&serverTimezone=GMT%2B8
+#          password: Meihao100@bfbd
+#          username: test
+#          poolName: share0_slave_0_pool
+#          maxPoolSize: 60
+#          minIdle: 10
+#          idleTimeout: 60000
+#          autoCommit: true
+#          maxLifetime: 600000
+#          connectionTimeout: 60000
+#          connectionInitSql: set names utf8mb4;
+#          connectionTestQuery: SELECT 1
+#          validationTimeout: 3000
+#
+#      masterSlaveRules:
+#        share0:
+#          load-balance-algorithm-type: round_robin
+#          master-data-source-name: ds_share0_master
+#          name: ds_ms
+#          slave-data-source-names:
+#            - ds_share0_slave_0
